@@ -1,0 +1,224 @@
+/* rem and em do NOT depend on html font-size in media queries!
+Instead, 1rem=1em=16px ,  */
+
+/* As a general rule of thumb, Media queries should work for approx 200px */
+
+/* Below  16px * 84 = 1344 px breakpoint (Smaller desktops)*/
+@media (max-width: 84em) {
+  .hero {
+    max-width: 120rem;
+  }
+
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  .gallery {
+    display: grid;
+    /* THis is the same as 1fr 1fr */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Below 1200 px, (landscape tablets) */
+@media (max-width: 75em) {
+  html {
+    /* making 1 rem 9px - 9px/16px = 56.25% */
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+/* below 944 px (Tablets) */
+@media (max-width: 59em) {
+  html {
+    /* making 1 rem 8px - 8px/16px = 50% */
+    font-size: 50%;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+
+  .hero-img {
+    width: 60%;
+  }
+
+  /* Centering content for CSS grid items */
+  .hero-text-box,
+  .hero-img-box {
+    text-align: center;
+  }
+
+  /* Centering content for flexbox items */
+  .delivered-meals {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  /* Scale logo size down in feature section */
+  .logos img {
+    height: 2.4rem;
+  }
+
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem 3.2rem;
+  }
+
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cta {
+    /* 3/5 = 60% text , 2/4=40% image */
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+
+  /* Mobile Navigation */
+  .btn-mobile-nav {
+    display: block;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* Animation Moving screen sideways  */
+    transform: translateX(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 2s ease-out;
+
+    /* Hide navigation */
+    /* Allows no transitions at all */
+    /* display: none; */
+
+    /* THE FOLLOWING SHOWS THE CORRECT METHOD OF HIDING ELEMENTS.. DONT USE DISPLAY NONE */
+    /* 1) Hide it visually */
+    opacity: 0;
+
+    /* 2)Make it unaccesible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3)Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  /* This implies the class nav-open must be the parent class in HTML */
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  /* This size is good for mobile */
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+
+  /* Below 704px (smaller tablets) */
+  @media (max-width: 44em) {
+    .grid--3-cols,
+    .grid--4-cols {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .diets {
+      /* To span the colmun from 1 end to the other, then justify center to center content */
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+
+    .heading-secondary {
+      margin-bottom: 4.8rem;
+    }
+
+    .pricing-plan {
+      width: 100%;
+    }
+
+    .grid--footer {
+      grid-template-columns: repeat(6,1fr);
+  }
+
+  .nav-col{
+    grid-row:1;
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+
+
+  .logo-col,
+  .address-col{
+    grid-column: span 3;
+  }
+
+
+
+  .copyright{
+    margin-left: 0rem;
+  }
+}
